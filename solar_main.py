@@ -43,6 +43,8 @@ def execution():
     if perform_execution:
         space.after(101 - int(time_speed.get()), execution)
 
+    write_stats_to_file("stats.txt", space_objects, physical_time)
+
 
 def start_execution():
     """Обработчик события нажатия на кнопку Start.
@@ -111,6 +113,9 @@ def main():
     global time_speed
     global space
     global start_button
+
+    file = open("stats.txt", "w")  # очищает файл статистики
+    file.close()
 
     print('Modelling started!')
     physical_time = 0
